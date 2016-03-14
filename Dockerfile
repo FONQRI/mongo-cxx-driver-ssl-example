@@ -29,7 +29,6 @@ RUN cd mongo-c-driver && \
     make -j8 && \
     make install
 
-RUN echo -----
 #RUN git clone -b master https://github.com/mongodb/mongo-cxx-driver
 RUN git clone -b messa_ssl_cstr_fix https://github.com/messa/mongo-cxx-driver
 RUN cd mongo-cxx-driver/build && \
@@ -44,7 +43,6 @@ RUN cd mongo-cxx-driver/build && \
 COPY hellomongo.cpp /
 RUN c++ --std=c++11 hellomongo.cpp -o hellomongo $(pkg-config --cflags --libs libmongocxx)
 
-RUN echo ---
 RUN ldconfig
 RUN ldd ./hellomongo
 RUN ./hellomongo
