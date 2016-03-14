@@ -11,6 +11,7 @@ RUN apt-get install -y --no-install-recommends \
     libtool \
     g++ \
     gcc \
+    gdb \
     git \
     make \
     pkg-config
@@ -28,7 +29,8 @@ RUN cd mongo-c-driver && \
     make -j8 && \
     make install
 
-RUN git clone -b master https://github.com/mongodb/mongo-cxx-driver
+#RUN git clone -b master https://github.com/mongodb/mongo-cxx-driver
+RUN git clone -b messa_ssl_cstr_fix https://github.com/messa/mongo-cxx-driver
 RUN cd mongo-cxx-driver/build && \
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
