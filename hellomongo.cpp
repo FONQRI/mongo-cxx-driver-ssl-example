@@ -8,7 +8,8 @@
 
 int main(int, char **) {
   mongocxx::instance inst{};
-  mongocxx::client conn{mongocxx::uri{}};
+  mongocxx::options::client opts;
+  mongocxx::client conn{mongocxx::uri{}, opts};
 
   bsoncxx::builder::stream::document document{};
 
