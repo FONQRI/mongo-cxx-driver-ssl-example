@@ -38,7 +38,7 @@ RUN cd mongo-cxx-driver/build && \
         -DCMAKE_INSTALL_PREFIX=/usr/local \
         -DCMAKE_CXX_FLAGS=-DMONGOC_HAVE_SSL=1 \
         .. && \
-    make -j8 MONGOC_HAVE_SSL=true && \
+    make -j6 && \
     make install
 
 COPY hellomongo.cpp /
