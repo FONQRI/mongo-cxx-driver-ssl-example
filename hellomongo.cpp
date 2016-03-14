@@ -9,6 +9,9 @@
 int main(int, char **) {
   mongocxx::instance inst{};
   mongocxx::options::client opts;
+  mongocxx::options::ssl ssl_opts;
+  ssl_opts.allow_invalid_certificates(true);
+  opts.ssl_opts(ssl_opts);
   mongocxx::client conn{mongocxx::uri{}, opts};
 
   bsoncxx::builder::stream::document document{};
