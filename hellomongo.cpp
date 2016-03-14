@@ -12,7 +12,7 @@ int main(int, char **) {
   mongocxx::options::ssl ssl_opts;
   ssl_opts.allow_invalid_certificates(true);
   opts.ssl_opts(ssl_opts);
-  mongocxx::client conn{mongocxx::uri{}, opts};
+  mongocxx::client conn{mongocxx::uri{"mongo://127.0.0.1:9017/test"}, opts};
 
   bsoncxx::builder::stream::document document{};
 
