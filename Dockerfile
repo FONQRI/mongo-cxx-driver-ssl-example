@@ -37,3 +37,10 @@ RUN cd mongo-cxx-driver/build && \
     make -j8 && \
     make install
 
+COPY hellomongo.cpp /
+RUN c++ --std=c++11 hellomongo.cpp -o hellomongo $(pkg-config --cflags --libs libmongocxx)
+
+RUN echo ---
+RUN ldconfig
+RUN ldd ./hellomongo
+RUN ./hellomongo
